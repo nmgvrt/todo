@@ -1,0 +1,8 @@
+{% extends "todo/base_list.html" %}
+
+{% block meta_page_title_prefix %}自分のタグ{% endblock %}
+{% block page_title_prefix %}自分のタグ{% endblock %}
+
+{% block add_url %}{% url 'add_my_tag' %}{% endblock %}
+{% block detail_block %}{% include 'todo/tag_list_block.html' %}{% endblock %}
+{% block name_if_empty %}タグ{% endblock %}

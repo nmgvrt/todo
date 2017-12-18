@@ -1,0 +1,16 @@
+{% extends 'base/base_delete_form.html' %}
+
+{% block meta_page_title_prefix %}ユーザ{% endblock %}
+{% block page_title_prefix %}ユーザ{% endblock %}
+
+{% block detail_block %}{% include 'auth/myuser_detail_block.html' %}{% endblock %}
+{% block name %}ユーザ{% endblock %}
+
+{% block extra_msg %}
+  <p>ユーザのタグはすべて削除されます.</p>
+  <p>
+    また, ユーザグループに登録されている場合は削除すると除外されます.
+    この際, 除外によってユーザグループの参加者が存在しなくなった場合は該当ユーザグループが削除されます.
+  </p>
+  <p>この作業には時間を要する場合があります.</p>
+{% endblock %}

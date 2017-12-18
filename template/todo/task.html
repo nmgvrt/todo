@@ -1,0 +1,21 @@
+<ul>
+<li>タスク名 : {{task.name}}</li>
+<li>タスク名 : {{task.root}}</li>
+<li>説明 : {{task.description}}</li>
+<li>作成日時 : {{task.created}}</li>
+<li>締め切り : {{task.deadline}}</li>
+<li>優先度 : {{task.priority}}</li>
+<li>深さ : {{task.depth}}</li>
+<li>完了 : {{task.done}}</li>
+<li>タグ : {{task.tags.all}}</li>
+<li>対象ユーザ : {{task.subjects.all}}</li>
+<li>完了ユーザ : {{task.done_users.all}}</li>
+</ul>
+
+{% if task.children.all %}
+  {% for child in task.children.all %}
+  {% with task=child template="todo/task.html" %}
+    {% include template %}
+  {% endwith %}
+  {% endfor %}
+{% endif %}

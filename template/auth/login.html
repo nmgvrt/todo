@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+
+{% block meta_page_title %}ログイン{% endblock %}
+
+{% block page_title %}ログイン{% endblock %}
+
+{% block contents %}
+
+  <div class="content">
+    <div class="container">
+      <div class="row">
+
+        <div class="bs-control col-sm-6 col-sm-offset-3">
+          <form class="form" method="post" action="{% url 'login' %}" role="form">
+            {% csrf_token %}
+
+            {% include 'base/base_form.html' %}
+
+            <div calss="form-group">
+              <button type="submit" class="btn btn-success btn-block">ログイン</button>
+            </div>
+
+            <input type="hidden" name="next" value="{{ next }}" />
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

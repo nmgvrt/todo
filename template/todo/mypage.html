@@ -1,0 +1,22 @@
+{% extends "todo/base_task_list.html" %}
+
+{% block meta_page_title %}マイページ{% endblock %}
+{% block page_title %}マイページ{% endblock %}
+
+{% block contents_header %}
+  <h3 class="title text-center">{{ recent }}日後までの未完了タスク一覧</h3>
+{% endblock %}
+
+{% block task_loop %}
+  <div class="individual">
+    {% for task in object_list %}
+      {% include 'todo/individual_task_detail_block.html' %}
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block msg_if_empty %}
+  該当するタスクはありません.
+{% endblock %}
+
+{% block paginator %}{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "todo/base.html" %}
+
+{% block meta_page_title %}$Site_name$/Todo{% endblock %}
+{% block page_title %}$Site_name$/Todo{% endblock %}
+
+{% block header_attr %}class="lg"{% endblock %}
+
+{% block contents %}
+  <style>
+    .container h2,
+    .container h3 {
+      margin-bottom: 2em;
+    }
+
+    .container h2 {
+      color: #1abc9c;
+    }
+  </style>
+
+  <div class="container text-center">
+
+    <h2>
+      専用設計のTodoアプリ
+    </h2>
+
+    {% if user.is_authenticated %}
+      <h3>
+        ようこそ! {{ user.get_full_name }}
+      </h3>
+
+      <a href="{% url 'todo_mypage' %}" class="btn btn-primary btn-lg">
+        マイページ
+      </a>
+    {% else %}
+      <h3>
+        ご利用にはログインが必要です
+      </h3>
+
+      <a href="{% url 'login' %}" class="btn btn-success btn-lg">
+        ログイン
+      </a>
+    {% endif %}
+
+  </div>
+
+{% endblock %}

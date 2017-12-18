@@ -1,0 +1,15 @@
+{% extends 'todo/base_delete_form.html' %}
+
+{% block meta_page_title_prefix %}ユーザグループ{% endblock %}
+{% block page_title_prefix %}ユーザグループ{% endblock %}
+
+{% block detail_block %}{% include 'todo/usergroup_detail_block.html' %}{% endblock %}
+{% block name %}ユーザグループ{% endblock %}
+
+{% block extra_msg %}
+  <p>
+    進行中のタスクに対象グループとして登録されている場合は削除すると除外されます.
+  </p>
+  <p>完了したタスクについてはそのまま残ります.</p>
+  <p>この作業には時間を要する場合があります.</p>
+{% endblock %}

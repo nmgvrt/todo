@@ -1,0 +1,7 @@
+<div class="task-tag">
+  {% for tag in task.root.unique_tags %}
+    <a href="{% if mode == 'public' %}{% url 'public_tasks_tag' tag.pk %}{% elif mode == 'my_task' %}{% url 'my_tasks_tag' tag.pk %}{% elif mode == 'finished_public' %}{% url 'finished_public_tasks_tag' tag.pk %}{% elif mode == 'finished_my_task' %}{% url 'finished_my_tasks_tag' tag.pk %}{% else %}{% url 'my_tasks_tag' tag.pk %}{% endif %}" class="btn btn-default btn-xs" style="background: {{ tag.css_color }}">
+      {{ tag.name }}
+    </a>
+  {% endfor %}
+</div>

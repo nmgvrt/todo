@@ -1,0 +1,15 @@
+{% extends 'todo/base_delete_form.html' %}
+
+{% block meta_page_title_prefix %}タスク{% endblock %}
+{% block page_title_prefix %}タスク{% endblock %}
+
+{% block detail_block %}
+  <div class="tree">
+    {% for task in object.get_descendants_include_self %}
+      {% include 'todo/tree_task_detail_block.html' %}
+    {% endfor %}
+  </div>
+{% endblock %}
+{% block name %}タスク{% endblock %}
+
+{% block extra_msg %}{% endblock %}

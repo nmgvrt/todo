@@ -1,0 +1,52 @@
+{% extends 'todo/base.html' %}
+
+{% load static from staticfiles %}
+
+{% block meta_page_title %}タスク完了{% endblock %}
+{% block page_title %}タスク完了{% endblock %}
+
+{% block contents %}
+  <div class="container">
+    <div class="individual">
+      {% include 'todo/individual_task_detail_block.html' %}
+    </div>
+
+
+    <div class="row">
+
+      <div class="bs-control col-sm-6 col-sm-offset-3">
+        <form class="form" method="post" action="./" role="form">
+          {% csrf_token %}
+
+          {% include 'base/base_form.html' %}
+
+          <div class="form-group">
+            <div id="bm_id_done_users" class="well">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <button class="btn btn-primary btn-block select-all">全選択</button>
+                </div>
+              </div>
+              <p></p>
+              <div class="row button-container"></div>
+            </div>
+          </div>
+
+          <div calss="form-group">
+            <button type="submit" class="btn btn-success btn-block">登録</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    targets = {
+      id_done_users: null,
+    };
+  </script>
+
+  <script src="{% static 'button_multiple.js' %}"></script>
+{% endblock %}

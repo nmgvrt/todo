@@ -1,0 +1,33 @@
+{% extends 'todo/base.html' %}
+
+{% load static from staticfiles %}
+
+{% block meta_page_title %}タスク完了{% endblock %}
+{% block page_title %}タスク完了{% endblock %}
+
+{% block contents %}
+  <div class="container">
+    <div class="individual">
+      {% include 'todo/individual_task_detail_block.html' %}
+    </div>
+
+    <div class="row">
+
+      <div class="bs-control col-sm-6 col-sm-offset-3">
+        <form class="form" method="post" action="./" role="form">
+          {% csrf_token %}
+
+          <p class="text-center">
+            自分を完了にします.
+          </p>
+
+          <div calss="form-group">
+            <button type="submit" class="btn btn-success btn-block">登録</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+{% endblock %}

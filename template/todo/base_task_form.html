@@ -1,0 +1,117 @@
+{% extends 'todo/base.html' %}
+
+{% load static from staticfiles %}
+
+{% block meta_page_title %}タスク管理{% endblock %}
+{% block page_title %}タスク管理{% endblock %}
+
+{% block contents %}
+  <div class="content">
+    <div class="container">
+      <div class="individual">
+        {% block contents_top %}{% endblock %}
+      </div>
+
+      <div class="row">
+
+        <div class="bs-control col-sm-6 col-sm-offset-3">
+          <form class="form" method="post" action="./" role="form">
+            {% csrf_token %}
+
+            {% include 'base/base_form.html' %}
+
+            <div id="set-users" class="json-multiple form-group required">
+              {% block required_set_users %}
+                <span class="label label-danger">必須</span>
+              {% endblock %}
+
+              <div class="json-multiple-frame well">
+
+                <div class="btn-group btn-group-justified switcher" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input id="set-users-user" type="radio" autocomplete="off" checked> ユーザ単位で指定
+                  </label>
+                  <label class="btn btn-primary">
+                    <input id="set-users-group" type="radio" autocomplete="off"> グループ単位で指定
+                  </label>
+                </div>
+
+                <div class="json-multiple-sub-frame">
+                  <div id="set-users-user-body" class="hidden-container inline-buttons row"></div>
+                  <div id="set-users-group-body" class="hidden-container inline-buttons row"></div>
+                </div>
+
+              </div>
+            </div> <!-- end #set-users -->
+
+            {% block set_tags_form %}
+              <div id="set-tags" class="json-multiple form-group">
+
+                <div class="json-multiple-frame well">
+
+                  <div class="btn-group btn-group-justified switcher" data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                      <input id="set-tags-public" type="radio" autocomplete="off" checked> 共有タグ
+                    </label>
+                    <label class="btn btn-primary">
+                      <input id="set-tags-private" type="radio" autocomplete="off"> 非共有タグ
+                    </label>
+                  </div>
+
+                  <div class="json-multiple-sub-frame">
+                    <div id="set-tags-public-body" class="hidden-container inline-buttons row"></div>
+                    <div id="set-tags-private-body" class="hidden-container inline-buttons row"></div>
+                  </div>
+
+                </div>
+              </div> <!-- end #set-tags -->
+            {% endblock %}
+
+            <div calss="form-group">
+              <button type="submit" class="btn btn-success btn-block">登録</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var jsonMultipleInfo = {
+        {% block set_users %}
+          "set-users": {
+              "initial": "set-users-user",
+              "mode": "all",
+              "children": {
+                  "set-users-user": "{% url 'json_usergroup_user' %}",
+                  "set-users-group": "{% url 'json_usergroup_group' %}"
+              },
+          },
+        {% endblock %}
+        {% block set_tags %}
+          "set-tags": {
+              "initial": "set-tags-public",
+              "mode": "all",
+              "children": {
+                  "set-tags-public": "{% url 'json_tag_public' %}",
+                  "set-tags-private": "{% url 'json_tag_private' %}"
+              },
+          }
+        {% endblock %}
+    };
+
+    var datetimeFields = {
+      "deadline": {
+        "locale": "ja",
+        "format": "YYYY-MM-DD HH:mm",
+        "stepping": 15,
+//        "sideBySide": true,
+        "showTodayButton": true,
+      }
+    }
+  </script>
+
+  <script src="{% static 'json_multiple.js' %}"></script>
+  {% include 'base/include_datetime_picker.html' %}
+{% endblock %}

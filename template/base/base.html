@@ -1,0 +1,140 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block meta_page_title %}No Title{% endblock %}</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    {% block head %}{% endblock %}
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <nav class="navbar navbar-default navbar-fixed-top" role=navigation>
+        <div class="container">
+
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% block site_title_url %}{% url 'index' %}{% endblock %}">
+              {% block site_title %}$Site_name${% endblock %}
+            </a>
+          </div>
+
+          <div id="navbar" class="collapse navbar-collapse">
+            {% block nav %}
+              <ul class="nav navbar-nav">
+                <li><a href="{% url 'todo_index' %}">Todo</a></li>
+              </ul>
+            {% endblock %}
+
+            <div class="navbar-right">
+              {% if user.is_authenticated %}
+                <div class="btn-group navbar-btn">
+                  <a class="btn btn-info" {% block mypage_url %}{% endblock %}>{{ user.get_full_name }}</a>
+                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{% url 'logout' %}">ログアウト</a></li>
+                    <li><a href="{% url 'logout_then_login' %}">別のアカウントでログイン</a></li>
+                    <li><a href="{% url 'change_password' user.pk %}">パスワード変更</a></li>
+                  </ul>
+                </div>
+              {% else %}
+                <a class="btn btn-success navbar-btn" href="{% url 'login' %}">ログイン</a>
+              {% endif %}
+            </div>
+
+          </div><!--/.nav-collapse -->
+
+        </div>
+      </nav>
+
+      {% block messages %}
+        {% if messages %}
+          <div id="messages">
+            {% for msg in messages %}
+              <div class="text-center alert-{% if msg.tags == 'error' %}danger{% else %}{{ msg.tags }}{% endif %}">
+                <div class="container">
+                  {{ msg }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endblock %}
+
+      <header {% block header_attr %}{% endblock %}>
+        <div class="container">
+          <h1>{% block page_title %}No Title{% endblock %}</h1>
+        </div>
+      </header>
+
+      <div id="frame">
+        {% block contents %}{% endblock %}
+      </div>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-row link">
+
+            <a href="{% url 'index' %}">
+              <span class="glyphicon glyphicon-home" aria-hidden="true"></span> $Site_name$ Web Apps
+            </a>
+            <a href="{% url 'todo_index' %}">
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Todo
+            </a>
+
+          </div>
+          <div class="footer-row copyright">
+            <p>&copy; $Site_name$ - $Year$</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <a id="top" class="circle-button" href="#">
+      <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+    </a>
+
+    <script>
+      $(document).ready(function() {
+        $("form .form-group.required > label").each(function() {
+          var requiredLabel = $.parseHTML('<span class="label label-danger">必須</span>');
+          $(requiredLabel).insertBefore($(this));
+        });
+
+        $('.anker *[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+    {% block script %}{% endblock %}
+
+  </body>
+</html>

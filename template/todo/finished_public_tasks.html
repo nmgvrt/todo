@@ -1,0 +1,13 @@
+{% extends "todo/base_task_list.html" %}
+
+{% block meta_page_title_prefix %}完了した公開{% endblock %}
+{% block page_title_prefix %}完了した公開{% endblock %}
+
+{% block msg_if_empty %}
+  <p>
+    該当する完了したタスクはありません.
+  </p>
+  <p>
+    すべてノードで完了するまでこのページには表示されません.
+  </p>
+{% endblock %}

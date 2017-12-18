@@ -1,0 +1,17 @@
+{% extends 'todo/base_task_form.html' %}
+
+{% block meta_page_title %}親タスク編集{% endblock %}
+{% block page_title %}親タスク編集{% endblock %}
+
+{% comment %}
+{% block set_tags %}
+  "set-tags": {
+      "initial": "set-tags-public",
+      "mode": "all",
+      "children": {
+          "set-tags-public": "{% url 'json_tag_public_edit' task.pk %}",
+          "set-tags-private": "{% url 'json_tag_private_edit' task.pk %}"
+      },
+  }
+{% endblock %}
+{% endcomment %}

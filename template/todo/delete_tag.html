@@ -1,0 +1,14 @@
+{% extends 'todo/base_delete_form.html' %}
+
+{% block meta_page_title_prefix %}タグ{% endblock %}
+{% block page_title_prefix %}タグ{% endblock %}
+
+{% block detail_block %}{% include 'todo/tag_detail_block.html' %}{% endblock %}
+{% block name %}タグ{% endblock %}
+
+{% block extra_msg %}
+  <p>
+    進行中のタスクに登録されている場合は削除すると除外されます.
+  </p>
+  <p>完了したタスクについてはそのまま残ります.</p>
+{% endblock %}

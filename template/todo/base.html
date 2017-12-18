@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+
+{% load static from staticfiles %}
+
+{% block head %}
+  <link href="{% static 'todo.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block site_title %}$Site_name$/Todo{% endblock %}
+{% block site_title_url %}{% url 'todo_index' %}{% endblock %}
+{% block mypage_url %}href="{% url 'todo_mypage' %}"{% endblock %}
+
+{% block nav %}
+  <ul class="nav navbar-nav">
+
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'earliest_month_calendar' %}">カレンダー</a></li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expand="false">タスク一覧 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'public_tasks' %}">公開タスク</a></li>
+          <li><a href="{% url 'my_tasks' %}">自分のタスク</a></li>
+          <li><a href="{% url 'finished_public_tasks' %}">完了した公開タスク</a></li>
+          <li><a href="{% url 'finished_my_tasks' %}">完了した自分のタスク</a></li>
+        </ul>
+      </li>
+
+      <li><a href="{% url 'add_task' %}">タスク登録</a></li>
+      <li><a href="{% url 'my_tags' %}">タグ管理</a></li>
+
+      {% if user.is_superuser %}
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expand="false">管理 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'admin_users' %}">ユーザ管理</a></li>
+            <li><a href="{% url 'admin_usergroups' %}">ユーザグループ管理</a></li>
+            <li><a href="{% url 'admin_tags' %}">共有タグ管理</a></li>
+          </ul>
+        </li>
+      {% endif %}
+    {% endif %}
+
+  </ul>
+{% endblock %}
+
+{% block script %}
+  <script>
+    $(document).ready(function() {
+      $(".task-frame").each(function() {
+        var link = $(this).find(".task-title a");
+        var url = link.attr("href");
+        var target = $(this).attr("id")
+        link.attr("href", url + "#" + target);
+      });
+
+      $(".task-body").on("click", function(e) {
+        e.preventDefault();
+
+        var next = $(this).find(".task-title a").attr("href");
+        location.href = next;
+      });
+
+      $('.anker *[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'todo/base_task_form.html' %}
+
+{% block meta_page_title %}子タスク登録{% endblock %}
+{% block page_title %}子タスク登録{% endblock %}
+
+{% block contents_top %}
+  {% include 'todo/individual_task_detail_block.html' %}
+{% endblock %}
+
+{% block required_set_users %}{% endblock %}
+{% block set_tags_form %}{% endblock %}
+
+{% block set_users %}
+  "set-users": {
+      "initial": "set-users-user",
+      "mode": "all",
+      "children": {
+          "set-users-user": "{% url 'json_usergroup_user_child' task.pk %}",
+          "set-users-group": "{% url 'json_usergroup_group_child' task.pk %}"
+      },
+  },
+{% endblock %}

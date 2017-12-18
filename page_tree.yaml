@@ -1,0 +1,213 @@
+root/:
+  /:
+    view: TemplateView
+    template: base/index.html
+    name: index
+  login/:
+    view: auth_view.login
+    template: auth/login.html
+    name: login
+  logout/:
+    view: auth_view.logout
+    name: logout
+  logout_then_login/:
+    view: auth_views.logout_then_login
+    name: logout_then_login
+  change_password_<pk>/:
+    view: auth_views.PassWordChangeView
+    template: auth/change_password.html
+    name: change_password
+  auth/:
+    admin/:
+      users/:
+        view: UserListView
+        template: auth/myusers.html
+        name: admin_users
+      add_user/:
+        view: UserCreateView
+        template: auth/add_myuser.html
+        name: admin_add_user
+      edit_user_<pk>/:
+        view: UserUpdateView
+        template: auth/edit_myuser.html
+        name: admin_edit_user
+      delete_user_<pk>/:
+        view: UserDeleteView
+        template: auth/delete_myuser.html
+        name: admin_delete_user
+  todo/:
+    /:
+      view: TemplateView
+      template: todo/index.html
+      name: todo_index
+    mypage/:
+      view: views.mypage
+      template: todo/mypage.html
+      name: mypage
+    calendar/:
+      view: views.earliest_month_calendar_view
+      template: todo/calendar.html
+      name: earliest_month_calendar
+    calendar/<year>/<month>/:
+      view: views.calendar_view
+      template: todo/calendar.html
+      name: calendar
+
+    public_tasks/:
+      view: PublicTaskListView
+      template: todo/public_tasks.html
+      name: public_tasks
+    finished_public_tasks/:
+      view: FinishedPublicTaskListView
+      template: todo/finished_public_tasks.html
+      name: finished_public_tasks
+    my_tasks/:
+      view: MyTaskListView
+      template: todo/my_tasks.html
+      name: my_tasks
+    finished_my_tasks/:
+      view: FinishedMyTaskListView
+      template: todo/finished_my_tasks.html
+      name: finished_my_tasks
+
+    public_tasks/tag_<pk>/:
+      view: PublicTaskListView
+      template: todo/public_tasks_tag.html
+      name: public_tasks_tag
+    finished_public_tasks/tag_<pk>/:
+      view: FinishedPublicTaskListView
+      template: todo/finished_public_tasks_tag.html
+      name: finished_public_tasks_tag
+    my_tasks/tag_<pk>/:
+      view: MyTaskListView
+      template: todo/my_tasks_tag.html
+      name: my_tasks_tag
+    finished_my_tasks/tag_<pk>/:
+      view: FinishedMyTaskListView
+      template: todo/finished_my_tasks_tag.html
+      name: finished_my_tasks_tag
+
+    public_tasks/group_<pk>/:
+      view: PublicTaskListView
+      template: todo/public_tasks_group.html
+      name: public_tasks_group
+    finished_public_tasks/group_<pk>/:
+      view: FinishedPublicTaskListView
+      template: todo/finished_public_tasks_group.html
+      name: finished_public_tasks_group
+    my_tasks/group_<pk>/:
+      view: MyTaskListView
+      template: todo/my_tasks_group.html
+      name: my_tasks_group
+    finished_my_tasks/group_<pk>/:
+      view: FinishedMyTaskListView
+      template: todo/finished_my_tasks_group.html
+      name: finished_my_tasks_group
+
+    add_task/:
+      view: views.add_task
+      template: todo/add_task.html
+      name: add_task
+    add_child_task_<pk>/:
+      view: views.add_child_task
+      template: todo/add_child_task.html
+      name: add_child_task
+    task_detail/:
+      view: TaskDetailView
+      template: todo/task_detail.html
+      name: task_detail
+    edit_task_<pk>/:
+      view: views.edit_task
+      template: todo/edit_root_task.html or todo/edit_child_task.html
+      name: edit_task
+    delete_task_<pk>/:
+      view: views.delete_task
+      template: todo/delete_task.html
+      name: delete_task
+    finish_task_<pk>/:
+      view: views.finish_task
+      template: todo/finish_task.html
+      name: finish_task
+    change_my_state_<pk>/:
+      view: views.change_my_state
+      template: todo/change_my_state.html
+      name: change_my_state
+
+    my_tags/:
+      view: MyTagListView
+      template: todo/my_tags.html
+      name: my_tags
+    add_my_tag/:
+      view: MyTagCreateView
+      template: todo/add_tag.html
+      name: add_my_tag
+    edit_tag_<pk>/:
+      view: TagUpdateView
+      template: todo/edit_tag.html
+      name: edit_tag
+    delete_tag_<pk>/:
+      view: TagDeleteView
+      template: todo/delete_tag.html
+      name: delete_tag
+
+    admin/:
+      tags/:
+        view: PublicTagListView
+        template: todo/tags.html
+        name: admin_tags
+      edit_tag_<pk>/:
+        view: TagUpdateView
+        template: todo/edit_tag.html
+        name: admin_edit_tag
+
+      usergroups/:
+        view: UserGroupListView
+        template: todo/usergroups.html
+        name: admin_usergroups
+      add_usergroup/:
+        view: UserGroupCreateView
+        template: todo/add_usergroup.html
+        name: admin_add_usergroup
+      edit_usergroup/:
+        view: UserGroupUpdateView
+        template: todo/edit_usergroup.html
+        name: admin_edit_usergroup
+      delete_usergroup/:
+        view: UserGroupDeleteView
+        template: todo/delete_usergroup.html
+        name: admin_delete_usergroup
+
+    json/:
+      usergroup/:
+        user/:
+          view: views.json_usergroup_user
+          name: json_usergroup_user
+        user/task_<pk>/:
+          view: views.json_usergroup_user_child
+          name: json_usergroup_user_child
+        user/task_<pk>/edit/:
+          view: views.json_usergroup_user_child_edit
+          name: json_usergroup_user_child_edit
+
+        group/:
+          view: views.json_usergroup_group
+          name: json_usergroup_group
+        group/task_<pk>/:
+          view: views.json_usergroup_group_child
+          name: json_usergroup_group_child
+        group/task_<pk>/:
+          view: views.json_usergroup_group_child_edit
+          name: json_usergroup_group_child_edit
+
+      tag/:
+        public/:
+          view: views.json_tag_public
+          name: json_tag_public
+        private/:
+          view: views.json_tag_private
+          name: json_tag_private
+
+    error/:
+      view: views.error
+      template: todo/error.html
+      name: error

@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+
+{% block meta_page_title %}{% block meta_page_title_prefix %}{% endblock %}一覧{% endblock %}
+{% block page_title %}{% block page_title_prefix %}{% endblock %}一覧{% endblock %}
+
+{% block contents %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <div class="anker">
+          <div class="circle-button-container clearfix">
+            <a id="circle-add-button" class="circle-button" href="{% block add_url %}{% endblock %}" data-toggle="tooltip" data-placement="top" title="登録">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+
+        {% if object_list %}
+          <div class="list-frame">
+            <table class="table table-striped">
+              {% block detail_block %}{% endblock %}
+            </table>
+          </div>
+        {% else %}
+          <div class="row list-frame">
+            <div class="col-sm-6 col-sm-offset-3">
+              <div class="well text-center">
+                {% block name_if_empty %}{% endblock %}がひとつも作成されていません.
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

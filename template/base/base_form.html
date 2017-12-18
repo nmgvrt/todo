@@ -1,0 +1,16 @@
+{% if form.non_field_errors %}
+  {% bootstrap_form_errors form type='non_fields' %}
+{% endif %}
+
+{% for field in form %}
+  {% bootstrap_field field %}
+{% endfor %}
+
+<style>
+  .form-group.required .label {
+    display: inline-block;
+    padding: .5em 1em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+</style>

@@ -1,0 +1,80 @@
+{% extends "todo/base.html" %}
+
+{% block meta_page_title %}{{ paginator.year }}年{{ paginator.month }}月の自分のタスク{% endblock %}
+{% block page_title %}{{ paginator.year }}年{{ paginator.month }}月の自分のタスク{% endblock %}
+
+{% block contents %}
+  <div class="container">
+
+    <nav class="pagination calendar">
+      <div class="pagination-wrapper">
+        <div class="item-container clearfix">
+          <p class="item side left {% if not paginator.has_previous %}disabled{% endif %}">
+            <a {% if paginator.has_previous %}href="{% url 'calendar' paginator.previous_year paginator.previous_month %}"{% endif %}>
+              <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> 前月
+            </a>
+          </p>
+
+          <p class="item side current_month {% if paginator.year == paginator.start.year and paginator.month == paginator.start.month %}disabled{% endif %}">
+            <a {% if paginator.year != paginator.start.year or paginator.month != paginator.start.month %}href="{% url 'earliest_month_calendar' %}"{% endif %}>
+              最初
+            </a>
+          </p>
+
+          <p class="item side right {% if not paginator.has_next %}disabled{% endif %}">
+            <a {% if paginator.has_next %}href="{% url 'calendar' paginator.next_year paginator.next_month %}"{% endif %}>
+              翌月 <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </nav>
+
+    {% if tasks %}
+      <div id="calendar-frame" class="row">
+        <ul class="weekdays clearfix">
+          <li class="weekday-label sunday">日</li>
+          <li class="weekday-label">月</li>
+          <li class="weekday-label">火</li>
+          <li class="weekday-label">水</li>
+          <li class="weekday-label">木</li>
+          <li class="weekday-label">金</li>
+          <li class="weekday-label saturday">土</li>
+        </ul>
+
+        {% for week in calendar %}
+          <div class="week-container clearfix {% if forloop.counter == calendar|length %}last{% endif %}">
+            {% for day in week %}
+              <div class="day-container pull-left {% if not day.day %}none{% endif %} {% if day.weekday == 6 %}first sunday{% endif %} {% if day.weekday == 5 %}last saturday{% endif %} {% if paginator.year == today.year and paginator.month == today.month and day.day == today.day %}today{% endif %}">
+                <div class="calendar-header">
+                  <p class="text-center">{% if day.day %}{{ day.day }}{% endif %}</p>
+                </div>
+
+                <div class="calendar-contents">
+                  {% for task in day.tasks %}
+                    <p>
+                      <a href="{% url 'task_detail' task.pk %}#task-{{ task.pk }}" class="btn btn-block btn-xs {% if task.is_out_of_date %}btn-danger{% else %}btn-primary{% endif %}">
+                        {{ task.name }}
+                      </a>
+                    </p>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+
+      </div>
+    {% else %}
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="well text-center">
+            該当するタスクがありません.
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+
+{% endblock %}

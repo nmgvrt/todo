@@ -1,0 +1,8 @@
+{% extends 'base/base_list.html' %}
+
+{% block meta_page_title_prefix %}ユーザ{% endblock %}
+{% block page_title_prefix %}ユーザ{% endblock %}
+
+{% block add_url %}{% url 'admin_add_user' %}{% endblock %}
+{% block detail_block %}{% include 'todo/myuser_list_block.html' %}{% endblock %}
+{% block name_if_empty %}ユーザ{% endblock %}

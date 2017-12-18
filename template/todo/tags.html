@@ -1,0 +1,8 @@
+{% extends "todo/base_list.html" %}
+
+{% block meta_page_title_prefix %}共有タグ{% endblock %}
+{% block page_title_prefix %}共有タグ{% endblock %}
+
+{% block add_url %}{% url 'admin_add_tag' %}{% endblock %}
+{% block detail_block %}{% include 'todo/tag_list_block.html' %}{% endblock %}
+{% block name_if_empty %}タグ{% endblock %}

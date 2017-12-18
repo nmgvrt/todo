@@ -1,0 +1,17 @@
+{% extends 'todo/add_child_task.html' %}
+
+{% block meta_page_title %}子タスク編集{% endblock %}
+{% block page_title %}子タスク編集{% endblock %}
+
+{% block contents_top %}{% endblock %}
+
+{% block set_users %}
+  "set-users": {
+      "initial": "set-users-user",
+      "mode": "all",
+      "children": {
+          "set-users-user": "{% url 'json_usergroup_user_child_edit' task.pk %}",
+          "set-users-group": "{% url 'json_usergroup_group_child_edit' task.pk %}"
+      },
+  },
+{% endblock %}

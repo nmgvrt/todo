@@ -1,0 +1,82 @@
+{% extends 'base/base.html' %}
+
+{% block meta_page_title %}$Site_name$ Web Apps{% endblock %}
+{% block page_title %}$Site_name$ Web Apps{% endblock %}
+
+{% block header_attr %}class="lg"{% endblock %}
+
+{% block contents %}
+  <div class="contents-list">
+    <div class="container">
+
+      <div class="icon-frame">
+        <p class="icon">
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        </p>
+      </div>
+
+      <div class="description">
+        <h1>Todo</h1>
+        <h2>
+          専用設計のTodoアプリ
+        </h2>
+        <a href="{% url 'todo_index' %}" class="btn btn-primary btn-lg">
+          はじめる
+        </a>
+      </div>
+
+      </h1>
+    </div>
+  </div>
+
+  <style>
+    #frame {
+      padding: 0;
+    }
+   
+    .contents-list {
+      padding: 2em 0;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .contents-list .icon {
+      display: inline-block;
+      margin: 0;
+      padding: .5em;
+      border-radius: 10px;
+      width: 2em;
+      height: 2em;
+      font-size: 6em;
+      line-height: 1em;
+      text-align: center;
+    }
+
+    .contents-list .icon,
+    .contents-list:nth-child(even) {
+      background: #1abc9c;
+      color: #fff;
+    }
+
+    .contents-list,
+    .contents-list:nth-child(even) .icon {
+      background: #fff;
+      color: #1abc9c;
+    }
+
+    .description h1 {
+      font-weight: 900;
+      font-size: 3em;
+    }
+
+    .description h2 {
+      margin: 0 0 1.5em;
+      color: #bdc3c7;
+    }
+
+    .description .btn {
+      padding: 1em 2em;
+      font-size: 1.5em;
+    }
+  </style>
+{% endblock %}

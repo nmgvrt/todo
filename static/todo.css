@@ -1,0 +1,439 @@
+#circle-tag-filter-button,
+#circle-group-filter-button {
+    background: #34495e;
+}
+
+#set-users {
+    margin-bottom: 1em;
+}
+
+.json-multiple-frame {
+    padding: .7em .7em .2em;
+    margin-bottom: 1em;
+}
+
+.json-multiple-sub-frame {
+    padding-top: .5em;
+}
+
+.action-list > div {
+    margin-bottom: 5px;
+}
+
+.parent-task {
+    padding-bottom: 2em;
+}
+
+div.list-frame {
+    margin-top: 2em;
+}
+
+div.color input,
+div.color input:hover {
+    color: #fff !important;
+}
+
+div.color .active {
+    opacity: 0.5;
+}
+
+h3.title {
+    margin: 0 0 1em;
+}
+
+.color .btn {
+    border: none;
+    color: #fff;
+}
+
+
+/* task list common */
+
+.task-title a {
+    color: #333;
+}
+
+.task-title a:hover {
+    text-decoration: none;
+}
+
+.task-body {
+    cursor: pointer;
+}
+
+.emergency {
+    border-color: #e74c3c !important;
+}
+
+.important {
+    border-color: #f1c40f !important;
+}
+
+.done {
+    border-color: #2ecc71 !important;
+}
+
+.label-emergency {
+    background: #e74c3c;
+}
+
+.label-important {
+    background: #f1c40f;
+}
+
+.label-done {
+    background: #2ecc71;
+}
+
+.task-attrs .label,
+.task-tag .btn {
+    display: inline-block;
+    margin: .2em 0;
+}
+
+.task-user .user-name {
+    margin-right: 1em;
+}
+
+.task-attrs .label {
+    padding: .5em 1em;
+}
+
+.task-tag .btn {
+    border: none;
+    color: #fff;
+    padding: .1em 1em;
+}
+
+
+/* tree task list */
+
+.tree .task-frame {
+    box-sizing: border-box;
+    width: 90%;
+    margin-bottom: 1em;
+    background: #ecf0f1;
+    border-bottom: 5px solid;
+    border-color: #555;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.tree .task-body {
+    padding: 1em 1.2em .3em;
+}
+
+.tree .level0 {
+    margin-left: 0%;
+}
+
+.tree .level1 {
+    margin-left: 2%;
+}
+
+.tree .level2 {
+    margin-left: 4%;
+}
+
+.tree .level3 {
+    margin-left: 6%;
+}
+
+.tree .level4 {
+    margin-left: 8%;
+}
+
+.tree .level5 {
+    margin-left: 10%;
+}
+
+.tree .root {
+    margin-top: 2em;
+}
+
+.tree .root:first-child {
+    margin-top: 0;
+}
+
+.tree .task-tag {
+    padding: .3em 1.2em .5em;
+    background: #555;
+}
+
+.tree .task-frame pre {
+    border: none;
+    background: none;
+    padding: 0 1em;
+    white-space: pre-wrap;
+}
+
+.tree .task-footer-frame {
+    padding: 0 .6em .5em;
+}
+
+.tree .task-footer {
+    border-top: 1px solid #dcdcdc;
+    padding: .5em .6em 0;
+}
+
+
+/* individual task list */
+
+.individual .task-frame {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 1em;
+    background: #ecf0f1;
+    border-bottom: 5px solid;
+    border-color: #555;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.individual .ancestors {
+    background: #bdc3c7;
+    padding: .3em 0 0;
+}
+
+.individual .ancestors .breadcrumb {
+    background: transparent;
+    margin: 0;
+}
+
+.individual .ancestors .breadcrumb li:before {
+    color: #333;
+}
+
+.individual .task-body {
+    padding: 1em 1.2em .3em;
+}
+
+.individual .task-tag {
+    padding: .3em 1.2em .5em;
+    background: #555;
+}
+
+.individual .task-footer-frame {
+    padding: 0 .6em .5em;
+}
+
+.individual .task-footer {
+    border-top: 1px solid #dcdcdc;
+    padding: .5em .6em 0;
+}
+
+
+/* for pagination */
+
+.pagination {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.pagination .item-container {
+    box-sizing: border-box;
+    line-height: 3em;
+    border-radius: 2em;
+    padding: .5em .5em;
+    display: inline-block;
+    background: #2c3e50;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.pagination .item {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    float: left;
+}
+
+.pagination .item a {
+    color: #2c3e50;
+}
+
+.pagination .side a {
+    width: 3em;
+    height: 3em;
+    font-size: 1em;
+    display: block;
+    background: #fff;
+}
+
+.pagination .left a {
+    border-radius: 1.5em 0 0 1.5em;
+}
+
+.pagination .right a {
+    border-radius: 0 1.5em 1.5em 0;
+}
+
+.pagination .inner a {
+    margin: 0 .2em;
+}
+
+.pagination .side a:hover {
+    background: #dcdcdc;
+}
+
+.pagination .disabled a {
+    color: #dcdcdc;
+}
+
+.pagination .disabled a:hover {
+    background: #fff;
+    cursor: not-allowed;
+}
+
+.pagination .active {
+    padding: 0 1em;
+    color: #fff;
+}
+
+
+/* for calandar */
+
+#calendar-frame {
+    background: #ecf0f1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    padding: 0 0 .5em;
+}
+
+.week-container {
+    width: 100%;
+}
+
+.day-container {
+    box-sizing: border-box;
+    width: calc(100% / 7);
+}
+
+.calendar-header {
+    padding: 0 .5em;
+}
+
+.calendar-header p {
+    margin: 0;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.today .calendar-header p {
+    color: #fff !important;
+    font-weight: bold;
+    border-color: #bdc3c7;
+    background: #bdc3c7;
+}
+
+.today.saturday .calendar-header p {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.today.sunday .calendar-header p {
+    background: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.none .calendar-header p {
+    border-bottom: none;
+}
+
+.calendar-contents {
+    padding: .5em 1em;
+    min-height: 1em;
+}
+
+.calendar-contents p {
+    margin: 0 0 .2em;
+}
+
+.calendar-contents .btn {
+    margin: 0;
+    width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.weekdays {
+    margin: 0;
+    padding: 1em 0 .5em;
+    list-style-type: none;
+    text-align: center;
+    font-weight: bold;
+    background: #bdc3c7;
+}
+
+.weekday-label {
+    box-sizing: border-box;
+    width: calc(100% / 7);
+    margin: 0;
+    padding: 0 1em;
+    float: left;
+}
+
+.weekdays .saturday,
+.saturday .calendar-header p {
+    color: #2980b9;
+    border-color: #2980b9;
+}
+
+.weekdays .sunday,
+.sunday .calendar-header p {
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.pagination.calendar {
+    margin-bottom: 1em;
+}
+
+.pagination.calendar .side a {
+    padding: 0 1em;
+    width: auto;
+}
+
+.pagination.calendar .current_month a {
+    width: auto;
+    padding: 0 2em;
+}
+
+.pagination .current_month.disabled a {
+    color: #fff;
+    background: #2c3e50;
+    cursor: default;
+}
+
+.pagination.calendar a:hover,
+.pagination.calendar a:hover {
+    text-decoration: none;
+}
+
+@media only screen and (max-width : 992px) {
+    #calendar-frame {
+        margin: 0 auto;
+        width: 95%;
+        padding: 1em 0 .5em;
+    }
+
+    .day-container {
+        width: 100%;
+    }
+
+    .none {
+        display: none;
+    }
+
+    .weekdays {
+        display: none;
+    }
+}
+
+
+/* for tag-filter */
+
+#tag-filter-modal .inline-buttons .btn {
+    color: #fff;
+}
+
+#group-filter-modal .well,
+#tag-filter-modal .well {
+    margin: 0;
+}

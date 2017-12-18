@@ -1,0 +1,16 @@
+{% extends 'todo/base.html' %}
+
+{% block meta_page_title %}"{{ object.name }}"の詳細{% endblock %}
+{% block page_title %}"{{ object.name }}"の詳細{% endblock %}
+
+{% block contents %}
+
+  <div class="container">
+    <div class="tree">
+      {% for task in object.get_root.get_tree %}
+        {% include 'todo/tree_task_detail_block.html' %}
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

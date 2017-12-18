@@ -1,0 +1,13 @@
+<dl class="dl-horizontal">
+  <dt>タグ名</dt>
+  <dd>{{ object.name }}</dd>
+  <dt>共有</dt>
+  <dd>
+    {% if object.public %}
+      <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+    {% else %}
+      <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+    {% endif %}
+  </dd>
+
+</dl>

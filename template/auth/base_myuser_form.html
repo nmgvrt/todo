@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block meta_page_title %}ユーザ{% block meta_page_title_suffix %}{% endblock %}{% endblock %}
+{% block page_title %}ユーザ{% block page_title_suffix %}{% endblock %}{% endblock %}
+
+{% block contents %}
+  <div class="content">
+    <div class="container">
+      <div class="row">
+
+        <div class="bs-control col-sm-6 col-sm-offset-3">
+          <form class="form" method="post" action="./" role="form">
+            {% csrf_token %}
+
+            {% include 'base/base_form.html' %}
+
+            <div calss="form-group">
+              <button type="submit" class="btn btn-success btn-block">登録</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block meta_page_title %}エラー{% endblock %}
+{% block page_title %}エラー{% endblock %}
+
+{% block messages %}{% endblock %}
+
+{% block contents %}
+
+  {% if messages %}
+    <div class="container">
+
+      {% for msg in messages %}
+        <div class="alert alert-{% if msg.tags == 'error' %}danger{% else %}{{ msg.tags }}{% endif %} text-center">
+          {{ msg }}
+        </div>
+      {% endfor %}
+
+    </div>
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,175 @@
+body {
+    padding-top: 50px;
+}
+
+header {
+    text-align: center;
+    padding: 10px 0 20px;
+    background: #34495e;
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+header h1 {
+    font-weight: 900;
+}
+
+header.lg {
+    padding: 5em 0;
+}
+
+header.lg h1 {
+    font-size: 4em;
+}
+
+.navbar-right {
+    margin-right: 0;
+}
+
+#frame {
+    padding: 20px 0;
+}
+
+#messages .container {
+    padding: .4em 1em;
+}
+
+.inline-buttons {
+    margin: 0 -5px;
+}
+
+.row.inline-buttons > div {
+    padding: 0 5px;
+}
+
+.inline-buttons .btn {
+    margin-bottom: .2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* for footer */
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+#wrapper {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 100px;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #95a5a6;
+    overflow: hidden;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.26);
+}
+
+footer .link a {
+    display: inline-block;
+    padding: 0 1em;
+    color: #34495e;
+}
+
+footer .copyright {
+    color: #333;
+}
+
+footer .container {
+    text-align: center;
+}
+
+footer .footer-row {
+    min-height: 50px;
+    line-height: 50px;
+}
+
+
+/* for page-top-buttons */
+.anker {
+    width: 100%;
+    min-height: 70px;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.anker .circle-button-container {
+    display: inline-block;
+}
+
+.anker .circle-button-wrapper {
+    float: left;
+    display: block;
+    padding: 0 1em;
+    height: 70px;
+}
+
+.anker .circle-button {
+    display: inline-block;
+    border: none;
+}
+
+@media only screen and (max-width : 480px) {
+    .anker .circle-button-wrapper {
+        float: none;
+        padding: .3em 1em;
+        height: 80px;
+    }
+}
+
+.circle-button {
+    display: block;
+    width: 5em;
+    height: 5em;
+    text-align: center;
+    border-radius: 2.5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.circle-button span {
+    color: #fff;
+    line-height: 2.5em;
+    font-size: 2em;
+}
+
+.circle-button:hover {
+    margin-top: -2px;
+}
+
+#circle-add-button {
+    background: #2ecc71;
+}
+
+
+/* for page-top button */
+#top {
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+    background: #ecf0f1;
+}
+
+#top:hover {
+    bottom: calc(1em + 2px);
+}
+
+#top span {
+    color: #333;
+}
+
+@media only screen and (max-device-width : 768px) {
+    #top {
+        display: none;
+    }
+}

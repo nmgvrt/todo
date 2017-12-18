@@ -1,0 +1,8 @@
+{% extends "todo/base_list.html" %}
+
+{% block meta_page_title_prefix %}ユーザグループ{% endblock %}
+{% block page_title_prefix %}ユーザグループ{% endblock %}
+
+{% block add_url %}{% url 'admin_add_usergroup' %}{% endblock %}
+{% block detail_block %}{% include 'todo/usergroup_list_block.html' %}{% endblock %}
+{% block name_if_empty %}ユーザグループ{% endblock %}
