@@ -35,10 +35,11 @@ jQuery, Moment.js, Bootstrap は CDN から読み込むためインストール�
 
 #### Python パッケージのインストール
 ```
-$ sudo apt install -y python3 python3-pip pyyaml git
+$ sudo apt install -y python3 python3-pip git
 $ sudo pip3 install Django==1.11.8
 $ sudo pip3 install django-mptt==0.8.7
 $ sudo pip3 install django-bootstrap3
+$ sudo pip3 install pyyaml
 ```
 
 #### 必要ファイルの用意
